@@ -1,0 +1,13 @@
+/Users/felixmo/Desktop/bloopsis/Temp/bin/Debug/UnityEngine.dll
+/Users/felixmo/Desktop/bloopsis/Temp/bin/Debug/UnityEditor.dll
+/Users/felixmo/Desktop/bloopsis/Temp/bin/Debug/UnityEngine.UI.dll
+/Users/felixmo/Desktop/bloopsis/Temp/bin/Debug/UnityEngine.Networking.dll
+/Users/felixmo/Desktop/bloopsis/Temp/bin/Debug/Mono.Cecil.dll
+/Users/felixmo/Desktop/bloopsis/Temp/bin/Debug/Unity.SerializationLogic.dll
+/Users/felixmo/Desktop/bloopsis/Temp/bin/Debug/Unity.DataContract.dll
+/Users/felixmo/Desktop/bloopsis/Temp/bin/Debug/ICSharpCode.NRefactory.dll
+/Users/felixmo/Desktop/bloopsis/Temp/bin/Debug/Unity.UNetWeaver.dll
+/Users/felixmo/Desktop/bloopsis/Temp/bin/Debug/Unity.UNetWeaver.dll.mdb
+/Users/felixmo/Desktop/bloopsis/Temp/bin/Debug/Unity.CecilTools.dll
+/Users/felixmo/Desktop/bloopsis/Temp/bin/Debug/Mono.Cecil.Pdb.dll
+/Users/felixmo/Desktop/bloopsis/Temp/bin/Debug/Mono.Cecil.Mdb.dll
