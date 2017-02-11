@@ -9,15 +9,16 @@ public class player_mouvment : MonoBehaviour {
     public float horizontalScroll = 5;
     public float verticalScroll = 5;
 
-    Vector3 Momentum = Vector3.zero;
     CharacterController player;
     Camera cam;
     Vector3 move;
-    Transform spellPoint;
-    
+
     void Start () {
         player = GetComponent<CharacterController>();
         cam = player.GetComponentInChildren<Camera>();
+		if (GetComponent<object_moveable> () != null) {
+			GetComponent<object_moveable> ().gravity = 0;
+		}
     }
 	
 	void Update () {
@@ -30,12 +31,7 @@ public class player_mouvment : MonoBehaviour {
         }
         move.y -= gravity * Time.deltaTime;
         player.Move(move * Time.deltaTime);
-        //push
-        if (Momentum != Vector3.zero) {
-            Momentum = Vector3.Lerp(Momentum, Vector3.zero, 5 * Time.deltaTime);
-            player.Move(Momentum * Time.deltaTime);
-        }
-        //rotate player, camera and spell point
+        //rotate player and camera
         float mx = horizontalScroll * Input.GetAxis("Mouse X");
         float my = verticalScroll * Input.GetAxis("Mouse Y");
         transform.Rotate(0, mx, 0, Space.Self);

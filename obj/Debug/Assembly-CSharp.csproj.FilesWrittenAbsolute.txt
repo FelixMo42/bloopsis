@@ -11,3 +11,7 @@
 /Users/felixmo/Desktop/bloopsis/Temp/bin/Debug/Unity.CecilTools.dll
 /Users/felixmo/Desktop/bloopsis/Temp/bin/Debug/Mono.Cecil.Pdb.dll
 /Users/felixmo/Desktop/bloopsis/Temp/bin/Debug/Mono.Cecil.Mdb.dll
+/Users/felixmo/Desktop/bloopsis/Temp/bin/Debug/Assembly-CSharp.dll.mdb
+/Users/felixmo/Desktop/bloopsis/Temp/bin/Debug/Assembly-CSharp.dll
+/Users/felixmo/Desktop/bloopsis/obj/Debug/Assembly-CSharp.dll
+/Users/felixmo/Desktop/bloopsis/obj/Debug/Assembly-CSharp.dll.mdb
