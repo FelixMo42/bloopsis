@@ -8,29 +8,44 @@ public class object_moveable : MonoBehaviour {
 	Vector3 momentum = Vector3.zero;
 	CharacterController controller;
 	Vector3 move;
+	bool isGrounded;
 
 	public void push (Vector3 push) {
 		momentum += push;
 	}
 
-	public void pull (Vector3 push) {
-		momentum -= push;
+	public void pull (Vector3 pull) {
+		momentum -= pull;
 	}
 
 	void Start () {
 		controller = GetComponent<CharacterController> ();
 		if (gravity < 0) {
-			gravity = GlobalVar.gravity;
+			gravity = global.gravity;
 		}
+	}
+
+	void OnCollisionStay (Collision collisionInfo) {
+		isGrounded = true;
+	}
+
+	void OnCollisionExit (Collision collisionInfo) {
+		isGrounded = false;
 	}
 		
 	void Update () {
 		//gravity
 		move = transform.TransformDirection(move);
-		if (controller.isGrounded) {
-			momentum.y = 0;
+		if (isGrounded) {
+			momentum.y = Mathf.Max(0,momentum.y);
+			Debug.Log ("grounded");
 		} else {
-			momentum.y -= gravity * Time.deltaTime;
+			if (Input.GetMouseButton (keys.pull) && gameObject == global.mouseOver) {
+				momentum.y = Mathf.Lerp(momentum.y,0,Time.deltaTime);
+				Debug.Log ("OGS");
+			} else {
+				momentum.y = Mathf.Lerp(momentum.y,-(int)gravity,Time.deltaTime);
+			}
 		}
 		//momentum
 		if (momentum != Vector3.zero) {
