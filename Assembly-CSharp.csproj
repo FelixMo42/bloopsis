@@ -47,8 +47,12 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\classes\global.cs" />
+     <Compile Include="Assets\classes\installation.cs" />
      <Compile Include="Assets\classes\keys.cs" />
+     <Compile Include="Assets\classes\map.cs" />
+     <Compile Include="Assets\classes\tile.cs" />
      <Compile Include="Assets\controllers\mouseController.cs" />
+     <Compile Include="Assets\controllers\shipController.cs" />
      <Compile Include="Assets\scritpts\object_clickable.cs" />
      <Compile Include="Assets\scritpts\object_moveable.cs" />
      <Compile Include="Assets\scritpts\player_movement.cs" />

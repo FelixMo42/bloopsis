@@ -7,12 +7,12 @@ public class mouseController : MonoBehaviour {
 
 	void Start () {
 		Cursor.lockState = CursorLockMode.Locked;
-		//Cursor.visible = false;
+		Cursor.visible = false;
 	}
 
 	void Update () {
 		//get mouse over
-		if (!Input.GetMouseButton(keys.pull)) {
+		if (!Input.GetMouseButton(keys.pull) || global.mouseOver == null) {
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 			RaycastHit hitInfo;
 			if (Physics.Raycast (ray, out hitInfo)) {
@@ -26,14 +26,14 @@ public class mouseController : MonoBehaviour {
 			}
 		}
 		//set cursor mode
-		if (Input.GetKeyDown(keys.escape)) {
+		if (Input.GetKeyDown (keys.escape)) {
 			locked = !locked;
 			if (locked) {
 				Cursor.lockState = CursorLockMode.Locked;
-				//Cursor.visible = false;
+				Cursor.visible = false;
 			} else {
 				Cursor.lockState = CursorLockMode.None;
-				//Cursor.visible = true;
+				Cursor.visible = true;
 			}
 		}
 	}

@@ -20,9 +20,7 @@ public class object_moveable : MonoBehaviour {
 
 	void Start () {
 		controller = GetComponent<CharacterController> ();
-		if (gravity < 0) {
-			gravity = global.gravity;
-		}
+		if (gravity < 0) gravity = global.gravity;
 	}
 
 	void OnCollisionStay (Collision collisionInfo) {
@@ -38,14 +36,10 @@ public class object_moveable : MonoBehaviour {
 		move = transform.TransformDirection(move);
 		if (isGrounded) {
 			momentum.y = Mathf.Max(0,momentum.y);
-			Debug.Log ("grounded");
 		} else {
-			if (Input.GetMouseButton (keys.pull) && gameObject == global.mouseOver) {
+			if (Input.GetMouseButton (keys.pull) && gameObject == global.mouseOver)
 				momentum.y = Mathf.Lerp(momentum.y,0,Time.deltaTime);
-				Debug.Log ("OGS");
-			} else {
-				momentum.y = Mathf.Lerp(momentum.y,-(int)gravity,Time.deltaTime);
-			}
+			else momentum.y = Mathf.Lerp(momentum.y,-(int)gravity,Time.deltaTime);
 		}
 		//momentum
 		if (momentum != Vector3.zero) {
