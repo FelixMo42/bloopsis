@@ -10,16 +10,35 @@ public class player_movement : MonoBehaviour {
 	public float horizontalScroll = 5;
 	public float verticalScroll = 5;
 
+	Animator anim;
 	CharacterController player;
 	Camera cam;
 	Vector3 move;
 
+	bool AnimatorIsPlaying(){
+		return anim.GetCurrentAnimatorStateInfo(0).length > anim.GetCurrentAnimatorStateInfo(0).normalizedTime;
+	}
+
+	bool playing(string name) {
+		anim.Update (0f);
+		return AnimatorIsPlaying() && anim.GetCurrentAnimatorStateInfo(0).IsName(name);;
+	}
+		
 	void Start () {
 		player = GetComponent<CharacterController>();
 		cam = player.GetComponentInChildren<Camera>();
 		if (GetComponent<object_moveable> () != null) {
 			GetComponent<object_moveable> ().gravity = 0;
 		}
+		anim = GetComponentsInChildren<Animator> ()[0];
+	}
+
+	void OnCollisionStay (Collision collisionInfo) {
+		anim.SetBool ("grounded",true);
+	}
+
+	void OnCollisionExit (Collision collisionInfo) {
+		anim.SetBool ("grounded",false);
 	}
 
 	void Update () {
@@ -27,15 +46,25 @@ public class player_movement : MonoBehaviour {
 		move.x = Input.GetAxis("Horizontal") * speed;
 		move.z = Input.GetAxis("Vertical") * speed;
 		move = transform.TransformDirection(move);
-		if (Input.GetButton("Jump") && player.isGrounded) {
+
+		int s = (int)Mathf.Abs (move.x) + (int)Mathf.Abs (move.z);
+		anim.SetInteger ("speed", s );
+		if (s > 0 && player.isGrounded && !playing("Walking") ) {
+			anim.Play ("Walking");
+		} else if (s == 0 && player.isGrounded) {
+			anim.Play ("Idle");
+		}
+
+		if (Input.GetKeyDown(keys.jump) && player.isGrounded) {
 			move.y = jumpSpeed;
+			anim.Play("Jumping");
 		}
 		move.y -= gravity * Time.deltaTime;
 		player.Move(move * Time.deltaTime);
 		//rotate player and camera
-		float mx = horizontalScroll * Input.GetAxis("Mouse X");
-		float my = verticalScroll * Input.GetAxis("Mouse Y");
-		transform.Rotate(0, mx, 0, Space.Self);
-		cam.transform.Rotate(-my, 0, 0, Space.Self);
+		float rx = horizontalScroll * Input.GetAxis("Mouse X");
+		float ry = verticalScroll * Input.GetAxis("Mouse Y");
+		transform.Rotate(0, rx, 0, Space.Self);
+		cam.transform.Rotate(-ry, 0, 0, Space.Self);
 	}
 }

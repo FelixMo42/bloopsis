@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class map {
 	tile[,] tiles;
-	int width;
-	int height;
+
+	public int width;
+
+	public int height;
 
 	public map(int width = 100, int height = 100) {
 		this.width = width;
